@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nkea bu nke anyi properties Ltd | Find Your Dream Property in Enugu</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f8fafc;color:#0f172a}
+header{background:#0f172a;color:#fff;padding:50px 20px;text-align:center}
+header h1{font-size:32px} header p{color:#cbd5e1;margin:10px 0}
+.btn{background:#2563eb;color:#fff;padding:12px 22px;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
+.filters{max-width:1100px;margin:20px auto;padding:0 20px;display:flex;gap:10px;flex-wrap:wrap}
+.filters input,.filters select{padding:12px;border-radius:10px;border:1px solid #e2e8f0;flex:1;min-width:150px}
+.grid{max-width:1100px;margin:auto;padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.card img{width:100%;height:180px;object-fit:cover}
+.card-body{padding:16px}.price{color:#2563eb;font-weight:800;font-size:18px}
+.badge{background:#eff6ff;color:#2563eb;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700}
+footer{text-align:center;padding:20px;color:#64748b}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>🏠 Nkea bu nke anyi properties Ltd</h1>
+<p>Find Verified Land & Houses in Enugu — No Wahala, No Scam.</p>
+<a class="btn" href="https://wa.me/2348066226992">Chat on WhatsApp</a>
+</header>
+<div class="filters">
+<input type="text" id="search" placeholder="Search e.g. Independence Layout..." onkeyup="filterProperties()">
+<select id="type" onchange="filterProperties()"><option value="">All Types</option><option>Land</option><option>House</option><option>Shop</option></select>
+<select id="location" onchange="filterProperties()"><option value="">All Locations</option><option>Enugu</option><option>Nsukka</option><option>Agbani</option></select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>© 2026 Nkea bu nke anyi properties Ltd | Igwe Divine Chimaobi | divineigwe09@gmail.com | 0806 622 6992</footer>
+<script>
+const properties=[
+{id:1,title:"Full Plot of Land - Independence Layout",type:"Land",location:"Enugu",price:"₦45,000,000",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600",desc:"Dry land, fenced & gated, with C of O."},
+{id:2,title:"4 Bedroom Duplex - Thinkers Corner",type:"House",location:"Enugu",price:"₦180,000,000",img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600",desc:"All rooms ensuite, POP, fitted kitchen."},
+{id:3,title:"Half Plot - Agbani Road",type:"Land",location:"Agbani",price:"₦12,500,000",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600",desc:"Close to road, instant allocation."},
+{id:4,title:"3 Bedroom Flat - Nsukka",type:"House",location:"Nsukka",price:"₦1,200,000 / year",img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600",desc:"Water, security, close to UNN."},
+{id:5,title:"Shop Space - Holy Ghost",type:"Shop",location:"Enugu",price:"₦800,000 / year",img:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600",desc:"Main road, high traffic area."},
+{id:6,title:"Full Plot - Centenary City",type:"Land",location:"Enugu",price:"₦28,000,000",img:"https://images.unsplash.com/photo-1500076656116-558758c991c1?w=600",desc:"Estate land, fast developing area."}
+];
+function render(list){
+document.getElementById('grid').innerHTML=list.map(p=>`
+<div class="card"><img src="${p.img}"><div class="card-body">
+<span class="badge">${p.type}</span> <span class="badge">${p.location}</span>
+<h3 style="margin:10px 0">${p.title}</h3><p style="color:#64748b;font-size:13px">${p.desc}</p>
+<div class="price" style="margin:10px 0">${p.price}</div>
+<a class="btn" href="https://wa.me/2348066226992?text=${encodeURIComponent('Hi Divine, I am interested in: '+p.title+' - '+p.price)}" target="_blank">Enquire on WhatsApp</a>
+</div></div>`).join('');
+}
+function filterProperties(){
+const q=document.getElementById('search').value.toLowerCase();
+const t=document.getElementById('type').value;
+const l=document.getElementById('location').value;
+render(properties.filter(p=>(p.title.toLowerCase().includes(q))&&(!t||p.type===t)&&(!l||p.location===l)));
+}
+render(properties);
+</script>
+</body>
+</html>
